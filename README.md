@@ -1,72 +1,48 @@
-# Buenas prácticas **a la hora de manipular objetos en 3D**
+# Clases importantes en AR Foundation con C#
 
 Autor: _Diego Carvajal_
 
-## Justificación:
+# Documentacion
 
-Los objetos 3D son producto de muchos años de investigación y de desarrllo, no es de sorpresa que tengan detrás de ellos una complejidad considerable. Asomarse a ver esa complejidad nos asusta pero también nos da una comprensión general de sus componentes, para tener mayor control sobre ellos en un proyecto de RA.
+## Justificación:
 
 ## Conceptos Claves:
 
-- Materials: Describe la apariencia del objeto 3D, usando implementaciones de una clase shader en Unity. Generalmente se manipulan mediante una interfaz en unity, en donde podemos controlar variables de color y de Texturas.
-- Textures: es una imagen estandar que es aplicada a través de la superficie de un Mesh. Está relacionado a los Shaders, haciendo posible efectos de luminancia.
-- Polygon Meshes: En español "malla" o como mejor lo entiendo "palitos" es una colección de datos que describen **la superficie** de una figura en 3D, esta colección está dada por vértices, aristas y caras, aunque algunas implementaciones guardan polígonos y superficies.
+- AR Foundation: AR Foundation es el puente entre las distintas plataformas y el desarrollo en **Unity**, representa en sí una interfaz que no implementa ninguna tecnología de AR. Por tal motivo, para ser usada, debe combinarse con un plug-in capaz de dirigir el desarrollo a una plataforma específica, estos plug-ins son:
 
-  Estos "palitos" están involucrados en la detección de colisiones, modelamiento de luz (ray tracing) y movimiento de cuerpo rígido
+  - [Google ARCore XR Plug-in](https://docs.unity3d.com/Packages/com.unity.xr.arcore@5.0/manual/index.html)
+  - [Appli ARKit](https://docs.unity3d.com/Packages/com.unity.xr.arkit@5.0/manual/index.html)
 
-  Suele usarse triángulos, por la facilidad de cómputo, aunque también pueden emplearse cuadriláteros, o polígonos cóncavos/convexos
+  En cada uno hay características/funcionamientos de RA que se soportan en unity y otras [que no](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html).
+
+- XR: es una forma de incluir todas estas aplicaciones en un mismo término:
+  - Virtual Reality
+  - Mixed Reality
+  - Augmented Reality
 
 ## Buenas prácticas:
 
-### Escala y unidades:
+# Ejemplos
 
-Es de importancia ajustar las unidades de medida, tanto para la luminancia como efectos de física y la preservación de realismo en un objeto 3D en RA.
+## Clase [MonoBehavior](https://docs.unity3d.com/2021.2/Documentation/ScriptReference/MonoBehaviour.html)
 
-- Ajustar en el programa de modelado el sistema de medida y tenerlo en cuenta al exportar a Unity.
+- Es la clase base en la que todo Script deriva.
+- Cuenta con varios métodos para sobre-escribir, como:
+  - _Start()_ como el método inicial de todo Script, se ejecuta antes de que cualquier método _update()_ lo haga.
+  - _Update()_ se activa en cada recuadro (frame (o acutialización de dibujo))
+- Cuenta con varios métodos a modo de eventos, como por ejemplo:
+  - _OnCollisionEnter()_
+  - _OnDestroy()_
+  - _OnGUI()_
+- Es útil y muy usado para conectarnos con valores propios de un objeto, como su geometría de colisión, sus propiedades de movimiento/rotación/escala, etc.
 
-  - Algunos vienen por defecto en cm mientras otros en pulgadas.
-  - En caso de duda, exportar un métro cúbico y compararlo con el objeto en cuestión
+## ARSession
 
-- Ajustar y tener en cuenta el velocidad de animación (frame rate).
+- Controla la sesión de Realidad Aumentada en el dispositivo
+- Sirve para hacer acciones cuando ciertos comportamientos ocurren en el dispositivo, como:
 
-### Archivos y objetos
-
-- Reflejar en los nombres unicidad y orden.
-
-  - Reflejar en el orden de las carpetas, el orden de las escenas, entonces, si tuvieramos 2 escenas, una para la UI y otra para RA, estas serían las subcarpetas de assets, así:
-
-    ![imagen](/images/names/folderNames.png)
-
-    Lo idean es que a medida en que se desarrollan esas escenas, ese mismo orden se refleje en las carpetas.
-
-  - Nombrar los archivos de manera única y con nombres claves para facilitar las búsquedas
-
-## Mesh
-
-- Construir teniendo en cuenta la cantidad y necesidad de polígonos
-  - Algunas herramientas de modelado necesitan un proceso final de optimización para quitarle peso al Mesh.
-- Evitar triángulos muy largos y delgados
-  ![imagen](/images/meshes/stairs.png)
-
-  La imagen de la izquierda tiene 726 polígonos y la de la derecha solo 156.
-
-- Una buena práctica es empezar muy simple e ir añadiendo detalles al modelo.
-
-## Textures
-
-- Si se usan texturas con medidas en potencias de 2 (512x512, 256\*512, etc), serán más eficientes y no necesitarán re-escalamiento en build-time
-
-- Probar con texturas de menor tamaño, y negociar entre la calidad y el peso que le aporta a la escena.
-- Guardar las texturas de salida (output textures) en una carpeta apartada.
-
-- Como en la imagen, separar las texturas que requieren elementos alpha de las que no lo requiere.
-
-  ![imagen](/images/textures/separateAlpha.jpeg)
-
-Recursos recomendados relacionados
-
-- [Good practices with assets](https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-ArtAssetBestPracticeGuide.html)
-
-- [Polygon Mesh](https://en.wikipedia.org/wiki/Polygon_mesh)
-
-- [Textures](https://docs.unity3d.com/Manual/Textures.html)
+  - attemptUpdate: cuando el dispositivo soporta XR pero no tiene el software requerido.
+  - notTrackingReason: Cuando AR Tracking se ha perdido.
+  - stateChanged: Cuando el estado de la AR session ha cambiado.
+    Algunos de sus estados son:
+    ![imagen de estados](/images/ARSession/states.png)
