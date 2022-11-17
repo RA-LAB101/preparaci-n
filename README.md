@@ -46,3 +46,10 @@ Autor: _Diego Carvajal_
   - stateChanged: Cuando el estado de la AR session ha cambiado.
     Algunos de sus estados son:
     ![imagen de estados](/images/ARSession/states.png)
+
+## ARRaycastManager
+
+- Maneja y nos da utilidades para usar raycast en XR 
+- Es recomendable usar esta clase para detectar comportamientos de objetos que hacen parte del mundo real, y no de la escena propia de unity.
+![imagen de estados](/images/ARRayCast/regular-vs-depth-hit-test.mp4)
+
