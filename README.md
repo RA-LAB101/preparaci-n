@@ -5,7 +5,7 @@ Autor: _Diego Carvajal_
 # Documentacion
 
 ## Justificación:
-
+- Conocer las clases más importantes de unity y de AR Foundation nos da la capacidad de proponer soluciones efectivas, y de entender, más allá de copiar, los ejemplos que se encuentran en internet.
 ## Conceptos Claves:
 
 - AR Foundation: AR Foundation es el puente entre las distintas plataformas y el desarrollo en **Unity**, representa en sí una interfaz que no implementa ninguna tecnología de AR. Por tal motivo, para ser usada, debe combinarse con un plug-in capaz de dirigir el desarrollo a una plataforma específica, estos plug-ins son:
@@ -19,8 +19,6 @@ Autor: _Diego Carvajal_
   - Virtual Reality
   - Mixed Reality
   - Augmented Reality
-
-## Buenas prácticas:
 
 # Ejemplos
 
