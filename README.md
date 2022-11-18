@@ -51,5 +51,5 @@ Autor: _Diego Carvajal_
 
 - Maneja y nos da utilidades para usar raycast en XR 
 - Es recomendable usar esta clase para detectar comportamientos de objetos que hacen parte del mundo real, y no de la escena propia de unity.
-![imagen de estados](/images/ARRayCast/regular-vs-depth-hit-test.mp4)
+![imagen de estados](/images/ARRayCast/hitTest.gif)
 
