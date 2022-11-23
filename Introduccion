@@ -1,0 +1,5 @@
+INTRODUCCION
+Para incluir paginas en el indice de Google se utiliza "Google Search Console" para enviar solicitudes de indexación.
+Con el fin de que el CSE reconozca la solicitud de indexación, el patrón de URL o sitio web tiene que figurar en la sección 
+"Sitios donde buscar" de la pestaña Aspectos básicos, que se encuentra en la página Configuración de los ajustes del CSE. 
+Es posible que las funciones de rastreo y de indexación no tengan un efecto inmediato.
