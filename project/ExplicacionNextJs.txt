@@ -1,0 +1,12 @@
+Next se desarrolla encima de REACT
+Poder interactuar el codigo en el backend
+Hace de react un framework mas completo
+
+Mejora algunas bibliotecas de next
+
+npm run dev
+build
+start - ejecutar en produccion
+lint - revisar slint
+
+Modulos para cambiar de paginas, crear widgets, enrutador, eso lo tiene ya Next
